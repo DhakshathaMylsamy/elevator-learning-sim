@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">E</div>
+        <div>
+          <p class="eyebrow">Learning Lab</p>
+          <h1>Elevator Lab</h1>
+        </div>
+      </div>
+      <nav>
+        <a href="#simulator">Simulator</a>
+        <a href="#parts">Parts</a>
+        <a href="#flow">How it works</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="badge">Complete beginner guide</p>
+          <h2>See how an elevator moves, stops, and stays safe.</h2>
+          <p>
+            Explore the main elevator parts and follow a simple ride from floor to floor.
+            This simulation is designed to make the mechanics easy to understand.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" id="demoBtn">Run Demo</button>
+            <button class="ghost" id="resetBtn">Reset</button>
+          </div>
+          <div class="stat-row">
+            <div>
+              <strong>5</strong>
+              <span>floors</span>
+            </div>
+            <div>
+              <strong>6</strong>
+              <span>main parts</span>
+            </div>
+            <div>
+              <strong>1</strong>
+              <span>simple ride</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mini-graph">
+            <div class="graph-bar bar-1"></div>
+            <div class="graph-bar bar-2"></div>
+            <div class="graph-bar bar-3"></div>
+            <div class="graph-bar bar-4"></div>
+            <div class="graph-bar bar-5"></div>
+          </div>
+          <div class="status-panel">
+            <span class="dot live"></span>
+            <p>System status</p>
+            <strong id="systemStatus">Ready</strong>
+          </div>
+          <div class="ride-note">
+            <span>Current floor</span>
+            <strong id="currentFloorReadout">Floor 1</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="simulator" id="simulator">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive simulator</p>
+          <h3>Try the elevator</h3>
+        </div>
+
+        <div class="simulator-shell">
+          <div class="building">
+            <div class="shaft" aria-label="Elevator shaft and car">
+              <div class="floor-floor floor-5">
+                <span>5</span>
+              </div>
+              <div class="floor-floor floor-4">
+                <span>4</span>
+              </div>
+              <div class="floor-floor floor-3">
+                <span>3</span>
+              </div>
+              <div class="floor-floor floor-2">
+                <span>2</span>
+              </div>
+              <div class="floor-floor floor-1">
+                <span>1</span>
+              </div>
+              <div class="elevator-car" id="elevatorCar">
+                <div class="car-window window-left"></div>
+                <div class="car-window window-right"></div>
+                <div class="car-door door-left"></div>
+                <div class="car-door door-right"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-card">
+            <div class="controls-header">
+              <div>
+                <p class="eyebrow">Cab controls</p>
+                <h4>Call elevator</h4>
+              </div>
+              <button class="tiny" id="openDoorBtn">Open door</button>
+            </div>
+
+            <div class="control-grid inside-panel">
+              <button class="floor-btn" data-floor="5">5</button>
+              <button class="floor-btn" data-floor="4">4</button>
+              <button class="floor-btn" data-floor="3">3</button>
+              <button class="floor-btn" data-floor="2">2</button>
+              <button class="floor-btn" data-floor="1">1</button>
+            </div>
+
+            <div class="floor-call-panel">
+              <h5>Floor buttons</h5>
+              <div class="call-list">
+                <button class="call-btn" data-floor="5">Floor 5</button>
+                <button class="call-btn" data-floor="4">Floor 4</button>
+                <button class="call-btn" data-floor="3">Floor 3</button>
+                <button class="call-btn" data-floor="2">Floor 2</button>
+                <button class="call-btn" data-floor="1">Floor 1</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="parts" id="parts">
+        <div class="section-heading">
+          <p class="eyebrow">Learn the parts</p>
+          <h3>Main components explained</h3>
+        </div>
+
+        <div class="parts-layout">
+          <div class="part-list" id="partList">
+            <button class="part-item active" data-part="motor">Motor</button>
+            <button class="part-item" data-part="rope">Hoist ropes</button>
+            <button class="part-item" data-part="counterweight">Counterweight</button>
+            <button class="part-item" data-part="controller">Controller</button>
+            <button class="part-item" data-part="door">Doors</button>
+            <button class="part-item" data-part="brake">Safety brake</button>
+          </div>
+
+          <article class="part-detail" id="partDetail">
+            <div class="detail-visual" id="partVisual">
+              <div class="shape motor"></div>
+            </div>
+            <div class="detail-copy">
+              <p class="eyebrow" id="partLabel">Power system</p>
+              <h4 id="partTitle">Motor</h4>
+              <p id="partDescription">
+                The motor provides the force that pulls the elevator car up and lowers it down.
+                It works with the drive system to control speed smoothly and safely.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="flow" id="flow">
+        <div class="section-heading">
+          <p class="eyebrow">Simple flow</p>
+          <h3>How a ride works</h3>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <span>1</span>
+            <div>
+              <h4>Press a button</h4>
+              <p>The system receives your request and chooses the best route.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <span>2</span>
+            <div>
+              <h4>Motor starts</h4>
+              <p>The motor turns and moves the car using ropes and pulley systems.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <span>3</span>
+            <div>
+              <h4>Doors open</h4>
+              <p>When the car is level with the floor, the doors open safely.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <span>4</span>
+            <div>
+              <h4>Safety checks</h4>
+              <p>Brakes, sensors, and controllers constantly monitor the ride.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built for curious beginners who want to understand how elevators really work.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
